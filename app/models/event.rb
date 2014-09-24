@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
-  
+    has_many :scores
+
+
   PARTY_START_TIME=16
   
   def votes

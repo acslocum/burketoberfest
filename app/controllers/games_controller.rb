@@ -15,6 +15,8 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
+    #puts "game.new"
+    #@game.attributes.keys.each { |x| puts x }
   end
 
   # GET /games/1/edit
@@ -72,6 +74,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name,:players,:duration)
+        params.require(:game).permit(:name,:players,:duration, :scoreType, :fixedAmount, :scoreCap, :event, :everybodyWins)
     end
 end

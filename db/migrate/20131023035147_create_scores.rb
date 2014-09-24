@@ -4,7 +4,8 @@ class CreateScores < ActiveRecord::Migration
       t.integer :rank
       t.integer :points
       t.references :game, index: true
-      t.references :person
+      t.references :person, index:true
+      t.references :event, index:true
 
       t.timestamps
     end

@@ -23,8 +23,10 @@ class ScoresController < ApplicationController
       end
       @game = Game.find(params[:game_id])
       event = params[:score][:event]
+      @event = Event.find_by(event)
       rank = params[:score][:rank]
-      @score = @game.scores.create({event: event, rank: rank, person: @person})
+      #@score = @game.addScore(scores.create({event: event, rank: rank, person: @person})
+      @score = @game.addScore(@event, rank,@person)
       if @score.save
         redirect_to @game, notice: "Winners don't use drugs!"
       else

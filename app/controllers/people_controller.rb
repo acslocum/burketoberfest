@@ -10,6 +10,7 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+      @person = Person.find(params[:id])
   end
 
   # GET /people/new
@@ -19,6 +20,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+      @person = Person.find(params[:id])
   end
 
   # POST /people
@@ -69,6 +71,7 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params[:person]
+        params.require(:person).permit(:name)
+
     end
 end

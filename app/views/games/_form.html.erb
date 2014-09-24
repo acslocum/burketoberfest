@@ -14,8 +14,23 @@
 	    <%= f.label :name %><br>
 	    <%= f.text_field :name %>
 	  </div>
-
-  <div class="actions">
+    <div>
+        <%= f.label :scoreType %><br>
+        <%= f.text_field :scoreType %>
+    </div>
+    <div>
+        <%= f.label :fixedAmount %><br>
+        <%= f.text_field :fixedAmount %>
+    </div>
+    <div>
+        <%= f.label :scoreCap %><br>
+        <%= f.text_field :scoreCap %>
+    </div>
+    <div>
+        <%= f.label :everybodyWins %><br>
+        <%= f.text_field :everybodyWins %>
+    </div>
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

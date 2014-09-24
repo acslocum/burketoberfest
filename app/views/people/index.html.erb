@@ -12,8 +12,9 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
-		<td><%= person.name%></td>
-		<td><%= person.total%></td>
+        <td><b>ID:</b> <%= person.id%></td>
+        <td><b>Name:</b> <%= person.name%></td>
+        <td><b> Points:</b> <%= person.total%></td>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>

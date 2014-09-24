@@ -1,1 +1,1 @@
-<div><%= score.result%> at <%= score.time%>. Vote: <%= score.event_name %> <%= link_to 'Remove', [score.game,score], method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<div><b><%=score.person.name=%> <%= score.result%></b> <%=score.game.name%> at <%= score.time%>. <b>Vote:</b> <%= score.event_name %> <b>Points:</b> <%=score.points %></div>
