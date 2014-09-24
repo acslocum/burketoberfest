@@ -1,5 +1,6 @@
 class Score < ActiveRecord::Base
   belongs_to :game
+  belongs_to :person
   
   WIN_FACTOR=5
   LOSE_FACTOR=1

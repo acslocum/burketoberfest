@@ -5,6 +5,13 @@
 <% end %>
 
 <%= form_for([@game,@game.scores.build]) do |f| %>
+	<%if(@person.nil?)%>
+	  <div>New? What's your name? <%= f.text_field :person %></div>
+	<%else%>
+	  <div>Cracking good show, <%= @person.name %>	
+	    <%= hidden_field_tag "score[person_id]", @person.id%>
+	  </div>
+	<%end%>
 	  <div>
 		Cast your vote: <%= f.collection_select :event, @events, :id, :name %>
 		<%= hidden_field_tag "score[rank]", @rank %>

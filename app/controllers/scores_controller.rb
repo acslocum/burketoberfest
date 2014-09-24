@@ -15,10 +15,16 @@ class ScoresController < ApplicationController
   
   
   def create
+      @person = Person.find(params[:score][:person_id]) unless params[:score][:person_id].nil?
+      if(@person.nil?)
+        @person = Person.new(name: params[:score][:person], uid: SecureRandom.uuid)
+        @person.save
+        cookies.permanent[:uid] = @person.uid
+      end
       @game = Game.find(params[:game_id])
       event = params[:score][:event]
       rank = params[:score][:rank]
-      @score = @game.scores.create({:event => event, :rank => rank})
+      @score = @game.scores.create({event: event, rank: rank, person: @person})
       if @score.save
         redirect_to @game, notice: "Winners don't use drugs!"
       else

@@ -22,12 +22,14 @@ class GamesController < ApplicationController
   end
   
   def new_win
+    @person = Person.find_by(uid: cookies[:uid])
     @game = Game.find(params[:game_id])
     @rank = 1
     @events = Event.find_all_by_next_event
   end
   
   def new_loss
+    @person = Person.find_by(uid:cookies[:uid])
     @game = Game.find(params[:game_id])
     @rank = 2
     @events = Event.find_all_by_next_event

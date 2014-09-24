@@ -1,5 +1,9 @@
 Burketoberfest::Application.routes.draw do
   
+  resources :people
+
+  resources :person do
+  end
   resources :events do
   end
   get 'events/next/:time', to: 'events#next'
