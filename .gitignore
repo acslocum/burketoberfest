@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 /xcode-project.xcworkspace
+/xcodeRespos.xcworkspace
+
