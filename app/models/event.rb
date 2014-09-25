@@ -4,8 +4,6 @@ class Event < ActiveRecord::Base
   def votes
      points = 0
      scores.each do |score|
-         puts "score"
-         puts score.points
          points += score.points
      end
 
