@@ -1,17 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <div>
-Name: <%= @game.name %>
-Score Type : <%= @game.scoreType %>
-Fixed Amount : <%= @game.fixedAmount %>
-Score Cap : <%= @game.scoreCap %>
-
+<b>Game: <%= @game.name %></b>
+<br><br>
 </div>
 
 <div>
-Scores:
+Results:
 <%= render @game.scores %>	
 </div>
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%= link_to 'My Overview', person_path(@person) %>
+
+

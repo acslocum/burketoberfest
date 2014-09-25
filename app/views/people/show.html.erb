@@ -1,15 +1,43 @@
 <p id="notice"><%= notice %></p>
 
 <div>
-Name:
-<%= @person.name %>
+<b>I am:
+<%= @person.name %></b><br>
+<b>I have:</b>
+<%= @person.total %> Points
+<br><br>
 </div>
 
 <div>
-Scores:
+<b><i>My Scores So Far</b></i>:
 <%= render @person.scores %>
 </div>
 
+<div>
+<br><br>
+<b><i>Leaderboard</b></i>:
+<ol>
+<% @people.each do |person| %>
+<li>
+<b><%= person.name %></b> points: <%=person.total %>
+</li>
+<% end %>
+</ol>
+</div>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
+<div>
+<b><i>Voting Status: <%= @eventDescription %></b><br></i>
+
+
+<ol>
+<% @events.each do |event| %>
+<li>
+<b><%= event.name %></b> points: <%=event.votes %>
+</li>
+<% end %>
+</ol>
+
+</div>
+
+
 <%= link_to 'Back', people_path %>

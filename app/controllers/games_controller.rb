@@ -28,6 +28,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:game_id])
     @rank = 1
     @events = Event.find_all_by_next_event
+    @eventDescription = @events[0].description
   end
   
   def new_loss
@@ -35,6 +36,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:game_id])
     @rank = 2
     @events = Event.find_all_by_next_event
+    @eventDescription = @events[0].description
   end
   
   # POST /games
@@ -70,6 +72,8 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
+      @person = Person.find_by(uid: cookies[:uid])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -4,7 +4,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+      @people = Person.all
   end
 
   # GET /people/1
@@ -66,6 +66,13 @@ class PeopleController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
+        @people = Person.all
+        @people.sort! { |a,b| b.total <=> a.total}
+        @events = Event.find_all_by_next_event
+        @eventDescription = @events[0].description
+        @events.sort! { |a,b| b.votes <=> a.votes}
+
+
       @person = Person.find(params[:id])
     end
 

@@ -1,19 +1,16 @@
-<% @events.each do |event| %>
-<div>
-	<%=event.name%>: <%=event.description%>
-</div>
-<% end %>
-
 <%= form_for([@game,@game.scores.build]) do |f| %>
 	<%if(@person.nil?)%>
-	  <div>New? What's your name? <%= f.text_field :person %></div>
+	  <div><br><b>New? What's your name?</b> <%= f.text_field :person %></div><br>
 	<%else%>
-	  <div>Cracking good show, <%= @person.name %>	
+	  <div>Cracking good show, <%= @person.name %><br>
 	    <%= hidden_field_tag "score[person_id]", @person.id%>
 	  </div>
 	<%end%>
+    <div><br><br><br>
+    <b><%=@eventDescription%></b>
+    </div>
 	  <div>
-		Cast your vote: <%= f.collection_select :event, @events, :id, :name %>
+		<b>Cast your vote:</b> <%= f.collection_select :event, @events, :id, :name %>
 		<%= hidden_field_tag "score[rank]", @rank %>
 	  </div>
 

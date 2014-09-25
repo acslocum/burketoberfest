@@ -155,6 +155,9 @@
    <FileRef
       location = "group:db/schema.rb">
    </FileRef>
+   <FileRef
+      location = "group:config/routes.rb">
+   </FileRef>
    <Group
       location = "group:db/migrate"
       name = "migrate">
