@@ -29,6 +29,9 @@ class GamesController < ApplicationController
     @rank = 1
     @events = Event.find_all_by_next_event
     @eventDescription = @events[0].description
+    @rule1 = @events[0].rule1
+    @rule2 = @events[0].rule2
+    @rule3 = @events[0].rule3
   end
   
   def new_loss
@@ -37,6 +40,9 @@ class GamesController < ApplicationController
     @rank = 2
     @events = Event.find_all_by_next_event
     @eventDescription = @events[0].description
+    @rule1 = @events[0].rule1
+    @rule2 = @events[0].rule2
+    @rule3 = @events[0].rule3
   end
   
   # POST /games

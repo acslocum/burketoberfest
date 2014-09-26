@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924000444) do
+ActiveRecord::Schema.define(version: 20140926104447) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20140924000444) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.string   "rule1"
+    t.string   "rule2"
+    t.string   "rule3"
   end
 
   create_table "games", force: true do |t|
@@ -27,6 +30,10 @@ ActiveRecord::Schema.define(version: 20140924000444) do
     t.integer  "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "scoreType"
+    t.integer  "fixedAmount"
+    t.integer  "scoreCap"
+    t.integer  "everybodyWins"
   end
 
   create_table "people", force: true do |t|
@@ -36,18 +43,7 @@ ActiveRecord::Schema.define(version: 20140924000444) do
     t.datetime "updated_at"
   end
 
-  create_table "scores", force: true do |t|
-    t.integer  "rank"
-    t.integer  "points"
-    t.integer  "game_id"
-    t.integer  "person_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "scores", ["event_id"], name: "index_scores_on_event_id"
-  add_index "scores", ["game_id"], name: "index_scores_on_game_id"
-  add_index "scores", ["person_id"], name: "index_scores_on_person_id"
+# Could not dump table "scores" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end

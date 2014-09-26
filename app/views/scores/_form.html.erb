@@ -8,6 +8,19 @@
 	<%end%>
     <div><br><br><br>
     <b><%=@eventDescription%></b>
+    <ul>
+    <% if(@rule1 != "")%>
+    <li><%=@rule1%></li>
+    <% end %>
+    <% if(@rule2 != "")%>
+    <li><%=@rule2%></li>
+    <% end %>
+    <% if(@rule3 != "")%>
+    <li><%=@rule3%></li>
+    <% end %>
+    </ul>
+
+
     </div>
 	  <div>
 		<b>Cast your vote:</b> <%= f.collection_select :event, @events, :id, :name %>
