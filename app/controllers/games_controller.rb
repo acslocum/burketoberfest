@@ -24,25 +24,14 @@ class GamesController < ApplicationController
   end
   
   def new_win
-    @person = Person.find_by(uid: cookies[:uid])
-    @game = Game.find(params[:game_id])
+    setWinLossFields()
     @rank = 1
-    @events = Event.find_all_by_next_event
-    @eventDescription = @events[0].description
-    @rule1 = @events[0].rule1
-    @rule2 = @events[0].rule2
-    @rule3 = @events[0].rule3
+
   end
   
   def new_loss
-    @person = Person.find_by(uid:cookies[:uid])
-    @game = Game.find(params[:game_id])
+    setWinLossFields()
     @rank = 2
-    @events = Event.find_all_by_next_event
-    @eventDescription = @events[0].description
-    @rule1 = @events[0].rule1
-    @rule2 = @events[0].rule2
-    @rule3 = @events[0].rule3
   end
   
   # POST /games
@@ -76,6 +65,31 @@ class GamesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def setWinLossFields
+        @person = Person.find_by(uid: cookies[:uid])
+        @game = Game.find(params[:game_id])
+        @events = []
+        allEvents =  Event.all
+        allEvents.sort! { |a,b| a.time <=> b.time}
+
+        lastEvent = allEvents[0]
+        allEvents.each do |event|
+            if event.time == lastEvent.time
+                @events.push(event)
+            else
+                break
+            end
+            lastEvent = event
+        end
+
+
+        
+        @eventDescription = @events[0].description
+        @rule1 = @events[0].rule1
+        @rule2 = @events[0].rule2
+        @rule3 = @events[0].rule3
+    end
+    
     def set_game
       @game = Game.find(params[:id])
       @person = Person.find_by(uid: cookies[:uid])
