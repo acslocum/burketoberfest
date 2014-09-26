@@ -14,7 +14,7 @@ class Person < ActiveRecord::Base
     bonusEligibleGamesCount = Game.all_non_fixed_games.count
     
     bonusEligibleGamesCompletedCount = 0
-    gamesCompletedCount = scores.select({|score| score.game.eligibleForTotalGameCount}).map(&:game).uniq.count
+    gamesCompletedCount = scores.select {|score| score.game.eligibleForTotalGameCount}.map(&:game).uniq.count
 
     points +=ALL_GAMES_BONUS if gamesCompletedCount ==bonusEligibleGamesCount
     
