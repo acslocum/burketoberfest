@@ -52,21 +52,26 @@ class Game < ActiveRecord::Base
   end
   
   def eligibleForTotalGameCount
-      return !isFixed()
+      !isFixed
   end
+  
+  def self.all_non_fixed_games
+    where.not(scoretype: 2)
+  end
+  
 
   
 private
     def isTimeBased
-        return scoreType==1
+        scoreType==1
     end
 
     def isFixed
-        return scoreType==2
+        scoreType==2
     end
     
     def shouldEverybodyWin
-        return everybodyWins==1
+        everybodyWins==1
     end
         
 

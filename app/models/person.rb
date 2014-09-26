@@ -1,5 +1,3 @@
-require 'Set'
-
 class Person < ActiveRecord::Base
   has_many :scores
   
@@ -13,31 +11,18 @@ class Person < ActiveRecord::Base
     scores.each{|score| points += score.points}
     
     # then add the bonus for number of games completed
-    bonusEligibleGamesCount = 0
-    allGames = Game.all
-    for index in 0 ... allGames.size
-        if ( allGames[index].eligibleForTotalGameCount())
-            bonusEligibleGamesCount += 1
-        end
-    end
+    bonusEligibleGamesCount = Game.all_non_fixed_games.count
     
     bonusEligibleGamesCompletedCount = 0
-    gamesCompleted = Set.new
-    for index in 0 ... scores.size
-       if (scores[index].game.eligibleForTotalGameCount())
-           gamesCompleted.add(scores[index].game)
-       end
-    end
-    
-    if (gamesCompleted.size ==bonusEligibleGamesCount)
-        points +=ALL_GAMES_BONUS
-    end
+    gamesCompletedCount = scores.select({|score| score.game.eligibleForTotalGameCount}).map(&:game).uniq.count
+
+    points +=ALL_GAMES_BONUS if gamesCompletedCount ==bonusEligibleGamesCount
     
     # add a bonus for all of the unique games, regardless of whether they're included in the all games bonus
     # so, for example, "pour a beer" is going to have a fixed payout and thus not be eligigle for the all games bonus
     # but, you can add to your exponential overall scoring if you participate in everything...
-    if (gamesCompleted.size > 1)
-        points += gamesCompleted.size^2*2
+    if (gamesCompletedCount > 1)
+        points += gamesCompletedCount^2*2
     end
     
     return points
