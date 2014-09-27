@@ -30,7 +30,7 @@
 
 
 <ol>
-<% @events.each do |event| %>
+<% @events.sort{|a,b| a.time <=>b.time}.each do |event| %>
 <li>
 <b><%= event.name %></b> points: <%=event.votes %>
 </li>
