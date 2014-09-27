@@ -64,7 +64,7 @@ class Game < ActiveRecord::Base
   end
   
   def self.all_non_fixed_games
-    where.not(scoretype: 2)
+    where.not(scoreType: 2)
   end
   
 
