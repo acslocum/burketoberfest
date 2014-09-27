@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
     #events = Event.all
     # adds the total points (win or lose) for each completed event
     #events.each{|event| points += event.votes[1][id]}
-    scores.each{|score| points += score.points}
+    scores.each{|score| points += score.points unless score.points.nil?}
     
     # then add the bonus for number of games completed
     bonusEligibleGamesCount = Game.all_non_fixed_games.count
