@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   has_many :scores
   
-  PARTY_START_TIME=16
+  PARTY_START_TIME=15
 
 
     def long_string
@@ -23,7 +23,7 @@ class Game < ActiveRecord::Base
       if isTimeBased()
           lastGameTime = -1
           if (scores.size == 0)
-              lastGameTime =    DateTime.new(2014,9,23,PARTY_START_TIME,0,0,"-4")
+              lastGameTime =    DateTime.new(2014,9,27,PARTY_START_TIME,0,0,"-4")
           else
             lastGameTime = scores[-1].created_at
           end
