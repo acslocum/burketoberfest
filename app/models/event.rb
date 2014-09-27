@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   def votes
      points = 0
      scores.each do |score|
-         points += score.points
+         points += score.points.abs
      end
 
     return points

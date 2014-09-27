@@ -21,8 +21,8 @@ LOSE_FACTOR=1
     end
 
     def pointsForTime(last_time)
-        return minutes_since(last_time)*WIN_FACTOR if winner?
-        minutes_since(last_time)*LOSE_FACTOR
+        return minutes_since(last_time).abs*WIN_FACTOR if winner?
+        minutes_since(last_time).abs*LOSE_FACTOR
     end
 
 
