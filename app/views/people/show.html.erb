@@ -17,7 +17,7 @@
 <br><br>
 <b><i>Leaderboard</b></i>:
 <ol>
-<% @people.sort{|a,b| a.total <=> b.total}.each do |person| %>
+<% @people.sort{|a,b| b.total <=> a.total}.each do |person| %>
 <li>
 <b><%= person.name %></b> points: <%=person.total %>
 </li>
