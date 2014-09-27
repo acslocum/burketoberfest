@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
     #events = Event.all
     # adds the total points (win or lose) for each completed event
     #events.each{|event| points += event.votes[1][id]}
-    scores.each{|score| points += score.points unless score.points.nil?}
+    scores.each{|score| points += score.points.abs unless score.points.nil?}
     
     # then add the bonus for number of games completed
     bonusEligibleGamesCount = Game.all_non_fixed_games.count
@@ -22,7 +22,7 @@ class Person < ActiveRecord::Base
     # so, for example, "pour a beer" is going to have a fixed payout and thus not be eligigle for the all games bonus
     # but, you can add to your exponential overall scoring if you participate in everything...
     if (gamesCompletedCount > 1)
-        points += gamesCompletedCount^2*2
+        points += (gamesCompletedCount^2*2).abs
     end
     
     return points
