@@ -24,7 +24,7 @@ class Game < ActiveRecord::Base
 	if isTimeBased()
 		lastGameTime = -1
 		if (scores.size == 0)
-			lastGameTime =    DateTime.new(2014,9,27,PARTY_START_TIME,0,0,"-4")
+			lastGameTime =    DateTime.new(2014,9,27,PARTY_START_TIME,0,0,"-8")
 		else
 			currentTime = Time.new
 			lastGameTime = scores[-1].created_at
