@@ -16,10 +16,10 @@ class Event < ActiveRecord::Base
   end
   
   def self.find_all_by_next_event
-    #hour = (next_event_hour + 12) % 24
-    #events = Event.find(:all, :conditions => ["time > ?", hour], :order => "time ASC")
-    #next_time = events.first.time
-    #events.select{ |event| event.time == next_time}
-    Event.all
+    hour = (next_event_hour + 12) % 24
+    events = Event.find(:all, :conditions => ["time > ?", hour], :order => "time ASC")
+    next_time = events.first.time
+    events.select{ |event| event.time == next_time}
+    #Event.all
   end
 end
