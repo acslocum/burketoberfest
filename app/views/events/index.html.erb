@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @events.sort{|a,b| a.time <=>b.time}.each do |event| %>
       <tr>
 		<td><%= event.name %> / <%=event.time%> PM / Votes: <%= event.votes%></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
